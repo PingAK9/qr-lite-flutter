@@ -1,32 +1,35 @@
-
 import 'package:flutter/material.dart';
-import 'package:qr_app/scan_page.dart';
-import 'package:qr_app/history_page.dart';
+import 'package:qr_app/home_view.dart';
+import 'package:qr_app/history_view.dart';
 
 void main() {
+
   runApp(new MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // Define the default Brightness and Colors
-        brightness: Brightness.light,
-//        primaryColor: Colors.lightGreen,
-//        accentColor: Colors.lightGreen,
-
-        // Define the default Font Family
-        fontFamily: 'Montserrat',
-
-        // Define the default TextTheme. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
+        brightness: Brightness.dark,
+        primaryColor: Colors.purple[200],
+        accentColor: Colors.teal[200],
+        backgroundColor: Color(0xff121212),
+//        fontFamily: 'Montserrat',
+        iconTheme: IconThemeData(color: Colors.white),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
+          brightness: Brightness.dark,
+          elevation: 0,
+          actionsIconTheme: IconThemeData(color: Colors.white),
+        ),
         textTheme: TextTheme(
           headline: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-          title: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
+          title: TextStyle(
+              fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
           overline: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
           button: TextStyle(color: Colors.white),
         ),
@@ -34,8 +37,8 @@ class MyApp extends StatelessWidget {
       title: 'Named Routes Demo',
       initialRoute: '/',
       routes: {
-        '/': (BuildContext build)=> new  ScanPage(),
-        '/history': (BuildContext build)=> new HistoryPage(),
+        '/': (BuildContext build) => new HomeView(),
+        '/history': (BuildContext build) => new HistoryVIew(),
       },
     );
   }

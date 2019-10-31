@@ -45,11 +45,12 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.pingak9.qrapp"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
     }
 
     signingConfigs {
@@ -64,7 +65,6 @@ android {
         release {
             signingConfig signingConfigs.release
             minifyEnabled true
-            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
