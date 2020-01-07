@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:majascan/majascan.dart';
 import 'package:qr_app/app_styles.dart';
 import 'package:qr_app/core.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    onScan();
+//    onScan();
   }
 
   bool _canLaunch = false;
@@ -36,8 +35,7 @@ class _HomeViewState extends State<HomeView> {
 
     return new MaterialApp(
       home: new WillPopScope(
-        onWillPop: ()async{
-
+        onWillPop: () async {
           return false;
         },
         child: new Scaffold(
@@ -174,17 +172,10 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future onScan() async {
-    Future<String> futureString = MajaScan.startScan(
-        title: "Scan Lite",
-        barColor: Colors.transparent,
-        titleColor: Colors.white,
-        qRCornerColor: AppStyles.colorSurface,
-        qRScannerColor: AppStyles.colorPrimary,
-        flashlightEnable: true);
-    futureString.then((value) {
+    Navigator.pushNamed(context, '/scan').then((value) {
       setState(() {
-        Core.instance.currentCode = HistoryUnit.createNew(value);
-        Core.instance.addNewHistoryUnit(value);
+        setState(() {
+        });
       });
     });
   }

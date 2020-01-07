@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_app/home_view.dart';
 import 'package:qr_app/history_view.dart';
+import 'package:qr_app/scan_view.dart';
 
 void main() {
 
@@ -35,10 +36,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Named Routes Demo',
-      initialRoute: '/',
+      initialRoute: '/scan',
       routes: {
-        '/': (BuildContext build) => new HomeView(),
+        '/home': (BuildContext build) => new HomeView(),
         '/history': (BuildContext build) => new HistoryVIew(),
+        '/scan': (BuildContext build) => new ScanView(),
       },
     );
   }
