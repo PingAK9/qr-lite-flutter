@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>930705868608-j4ctsohf5fkul1rh0fdvklu12lsu1138.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.930705868608-j4ctsohf5fkul1rh0fdvklu12lsu1138</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>930705868608-fj4cpj6c2ntur8u29n25g7a3ql6mjg2t.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBUYgpRioP9ZNX7CvoQHTsrwEqQreOIZdU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>930705868608</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bigc.appbigc</string>
+	<key>PROJECT_ID</key>
+	<string>bigc-mobile-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bigc-mobile-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:930705868608:ios:6c8a1274d477deb1</string>
+	<key>DATABASE_URL</key>
+	<string>https://bigc-mobile-app.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "171728127866",
+    "firebase_url": "https://qr-scan-lite.firebaseio.com",
+    "project_id": "qr-scan-lite",
+    "storage_bucket": "qr-scan-lite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171728127866:android:022c484f85538a430c78c3",
+        "android_client_info": {
+          "package_name": "com.pingak9.qrapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171728127866-gilu07vd6065cj8rgiajmhec38911lsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDLr3o78OmnLwFnI4C-oS3Hzr50TIyVCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171728127866-gilu07vd6065cj8rgiajmhec38911lsi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "171728127866-ak6vgf3oev5a5k6njnt9hrmheqih0jdt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pingak9.qrapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

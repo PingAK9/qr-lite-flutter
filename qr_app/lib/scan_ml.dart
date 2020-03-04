@@ -1,26 +1,35 @@
+/**
+import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_ml_vision/flutter_camera_ml_vision.dart';
 import 'package:qr_app/core.dart';
 import 'package:qr_app/focus_scan.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class ScanView extends StatefulWidget {
+class ScanMLView extends StatefulWidget {
   @override
-  _ScanViewState createState() => _ScanViewState();
+  _ScanMLViewState createState() => _ScanMLViewState();
 }
 
-class _ScanViewState extends State<ScanView> {
+class _ScanMLViewState extends State<ScanMLView> {
+  bool resultSent = false;
+  bool isFlash = false;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        onScan('');
+        _onClose(null);
         return false;
       },
       child: Scaffold(
         body: Stack(children: [
-          QRView(
-            key: qrKey,
-            onQRViewCreated: _onQRViewCreated,
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: CameraMlVision<List<Barcode>>(
+              detector: FirebaseVision.instance.barcodeDetector().detectInImage,
+              onResult: _onResult,
+              resolution: ResolutionPreset.max,
+            ),
           ),
           Container(
             margin: EdgeInsets.only(top: kToolbarHeight),
@@ -37,7 +46,6 @@ class _ScanViewState extends State<ScanView> {
               IconButton(
                 icon: Icon(isFlash ? Icons.flash_off : Icons.flash_on),
                 onPressed: () {
-                  controller.toggleFlash();
                   setState(() {
                     isFlash = !isFlash;
                   });
@@ -50,23 +58,20 @@ class _ScanViewState extends State<ScanView> {
     );
   }
 
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController controller;
-  bool isFlash = false;
-
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen(onScan);
+  void _onResult(List<Barcode> codes) {
+    if (codes != null && codes.isNotEmpty) {
+      if (!mounted || resultSent) {
+        return;
+      }
+      resultSent = true;
+      _onClose(codes.first);
+    }
   }
 
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
-  void onScan(String data) {
-    if (data != null && data.isNotEmpty) {
+  void _onClose(Barcode barcode) {
+    final String data = barcode?.displayValue;
+    if (barcode != null) {
+      final String data = barcode.displayValue;
       Core.instance.currentCode = HistoryUnit.createNew(data);
       Core.instance.addNewHistoryUnit(data);
     } else {
@@ -79,3 +84,4 @@ class _ScanViewState extends State<ScanView> {
     }
   }
 }
+*/
