@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr_app/core.dart';
-import 'package:qr_app/focus_scan.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanView extends StatefulWidget {
@@ -23,13 +22,20 @@ class _ScanViewState extends State<ScanView> {
             onQRViewCreated: _onQRViewCreated,
           ),
           Container(
-            margin: EdgeInsets.only(top: kToolbarHeight),
-            alignment: Alignment.center,
-            child: ScanFocus(),
+            decoration: ShapeDecoration(
+                shape: QrScannerOverlayShape(borderColor: Colors.white)),
           ),
           AppBar(
-            backgroundColor: Colors.transparent,
             elevation: 0,
+            iconTheme: IconThemeData(color: Colors.white),
+            actionsIconTheme: IconThemeData(color: Colors.white),
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500),
+            ),
+            backgroundColor: Colors.transparent,
             leading: const CloseButton(),
             centerTitle: true,
             title: const Text('SCAN LITE'),
@@ -65,17 +71,23 @@ class _ScanViewState extends State<ScanView> {
     super.dispose();
   }
 
+  bool isFinish = false;
+
   void onScan(String data) {
-    if (data != null && data.isNotEmpty) {
-      Core.instance.currentCode = HistoryUnit.createNew(data);
-      Core.instance.addNewHistoryUnit(data);
-    } else {
-      Core.instance.currentCode = null;
-    }
-    if (Navigator.canPop(context)) {
-      Navigator.pop(context, data);
-    } else {
-      Navigator.pushReplacementNamed(context, '/home');
+    if(isFinish == false) {
+      isFinish = true;
+      controller.dispose();
+      if (data != null && data.isNotEmpty) {
+        Core.instance.currentCode = HistoryUnit.createNew(data);
+        Core.instance.addNewHistoryUnit(data);
+      } else {
+        Core.instance.currentCode = null;
+      }
+      if (Navigator.canPop(context)) {
+        Navigator.pop(context, data);
+      } else {
+        Navigator.pushReplacementNamed(context, '/home');
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_app/home_view.dart';
 import 'package:qr_app/history_view.dart';
-import 'package:qr_app/scan_ml.dart';
 import 'package:qr_app/scan_view.dart';
 
 void main() {
@@ -14,19 +13,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         brightness: Brightness.light,
-        primaryColor: const Color(0xFF07C5CE),
-        accentColor: Colors.teal[200],
         appBarTheme: AppBarTheme(
+          elevation: 1,
+          color: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black54),
+          actionsIconTheme: IconThemeData(color: Colors.black54),
+          textTheme: TextTheme(
+            headline6: TextStyle(
+                color: Colors.black54, fontSize: 18, fontWeight: FontWeight.w500),
+          ),
+        ),
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
 
-            iconTheme: IconThemeData(color: Colors.white),
-            elevation: 0,
-            actionsIconTheme: IconThemeData(color: Colors.white),
-            textTheme: TextTheme(
-                title: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700))),
       ),
       title: 'My App',
       initialRoute: '/scan',
