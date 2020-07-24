@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:qr_app/core.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -61,7 +60,7 @@ class _HistoryVIewState extends State<HistoryVIew> {
         itemBuilder: _buildItem,
         padding: const EdgeInsets.all(15),
         separatorBuilder: (context, index) {
-          return const Divider(thickness: 2);
+          return const Divider(thickness: 1);
         },
       );
     }
@@ -117,12 +116,11 @@ class _HistoryItemUIState extends State<HistoryItemUI> {
             children: <Widget>[
               buildBottomButton('Share',
                   icon: Icons.share, color: Colors.purple, onPressed: () {
-                Share.share(Core.instance.currentCode.barcode);
+                Share.share(widget.item.barcode);
               }),
               buildBottomButton('Copy',
                   icon: Icons.content_copy, color: Colors.green, onPressed: () {
-                Clipboard.setData(
-                    ClipboardData(text: Core.instance.currentCode.barcode));
+                Clipboard.setData(ClipboardData(text: widget.item.barcode));
                 Scaffold.of(context).showSnackBar(const SnackBar(
                   content: Text('Copied'),
                   duration: Duration(seconds: 1),
@@ -134,7 +132,7 @@ class _HistoryItemUIState extends State<HistoryItemUI> {
                   icon: Icons.insert_link,
                   color: Colors.blue,
                   onPressed: () {
-                    launch(Core.instance.currentCode.barcode);
+                    launch(widget.item.barcode);
                   },
                 ),
             ],

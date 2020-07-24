@@ -1,7 +1,7 @@
 name: qr_app
 description: A new Flutter application.
 
-version: 2.0.2+21
+version: 2.0.3+22
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
@@ -14,8 +14,6 @@ dependencies:
   url_launcher: ^5.5.0
   share: ^0.6.4+3
   qr_code_scanner: ^0.0.13
-#  flutter_camera_ml_vision: ^2.2.5
-  flutter_slidable: ^0.5.4
 
 dev_dependencies:
   flutter_test:
